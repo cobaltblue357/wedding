@@ -152,42 +152,53 @@
 
 @media only screen and (max-width: 600px) {
   .envelope-wrapper {
-    width: 90%;
+    width: 100%;
     height: auto;
-    margin-top: 100px;
+    margin-top: 120px;
+    margin-bottom: 40px;
   }
 
   .envelope-image,
   .invite-card {
     width: 100%;
     height: auto;
+    left: 0;
+    transform: none;
   }
 
   .card {
     width: 90%;
     padding: 16px;
-    font-size: 15px;
+    font-size: 16px;
+    position: relative;
+    right: 0;
+    top: auto;
+    margin: 0 auto 20px auto;
   }
 
-  h2, h3 {
-    font-size: 22px;
+  h2 {
+    font-size: 24px;
+  }
+
+  h3 {
+    font-size: 20px;
   }
 
   .rsvp-link {
     font-size: 16px;
-    padding: 10px;
+    padding: 10px 16px;
+    display: inline-block;
   }
 
-  label, input, select, button {
+  label,
+  input,
+  select,
+  button {
     font-size: 15px;
   }
 
-  #invitationCard,
   #rsvpFormContainer {
-    position: static;
-    margin: 20px auto;
-    right: auto;
-    top: auto;
+    top: auto !important;
   }
 }
   </style>
