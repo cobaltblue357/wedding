@@ -153,8 +153,7 @@
 @media only screen and (max-width: 768px) {
   .envelope-wrapper {
     width: 100%;
-    height: auto;
-    margin-top: 100px;
+    margin-top: 60px;
   }
 
   .envelope-image {
@@ -163,30 +162,13 @@
   }
 
   .invite-card {
-    width: 85% !important;
-    max-width: 300px;
-    left: 50%;
+    width: 90% !important;
+    max-width: 320px;
     bottom: 0 !important;
+    left: 50% !important;
     transform: translateX(-50%) scale(1) !important;
-  }
-
-  .invite-card.slide-up {
-    animation: mobileSlideUp 2s ease-in-out forwards !important;
-  }
-
-  @keyframes mobileSlideUp {
-    0% {
-      opacity: 0;
-      transform: translateX(-50%) translateY(50px) scale(0.9);
-    }
-    50% {
-      opacity: 1;
-      transform: translateX(-50%) translateY(-10px) scale(1.05);
-    }
-    100% {
-      transform: translateX(-50%) translateY(0px) scale(1.05);
-      opacity: 1;
-    }
+    animation: none !important; /* suppress the scale + bounce animation */
+    opacity: 1 !important;
   }
 
   #invitationCard,
@@ -203,7 +185,7 @@
 
   .card {
     padding: 12px;
-    font-size: 12px;
+    font-size: 14px;
   }
 
   h2 {
