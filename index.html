@@ -157,12 +157,12 @@
 <body>
 
 <div class="envelope-wrapper">
-  <div class="click-overlay" id="envelopeClickArea"></div>
   <img src="envelope_closed.png" class="envelope-image" id="envelopeClosed" alt="Closed Envelope" />
   <img src="envelope_open_with_card.png" class="envelope-image hidden" id="envelopeOpenCard" alt="Open Envelope with Card" />
   <img src="envelope_open_empty.png" class="envelope-image hidden" id="envelopeOpenEmpty" alt="Open Empty Envelope" />
   <img src="invitation_card.png" class="invite-card hidden" id="inviteCard" alt="Invitation Card" />
 </div>
+
 
 
   <!-- You Are Invited Card -->
@@ -217,10 +217,13 @@
   </div>
 
   <script>
-    window.onload = function () {
-      document.getElementById("envelopeClosed").classList.remove("hidden");
-        document.getElementById("envelopeClickArea").addEventListener("click", openInvitation);
-    };
+window.onload = function () {
+  document.getElementById("envelopeClosed").classList.remove("hidden");
+
+  // Attach listener directly to the visible image
+  document.getElementById("envelopeClosed").addEventListener("click", openInvitation);
+};
+
 
     function openInvitation() {
       document.getElementById("envelopeClosed").classList.add("hidden");
