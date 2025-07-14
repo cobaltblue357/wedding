@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Wedding Invitation</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fef8f4;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 200vh;
+      margin: 0;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    .envelope-wrapper {
+      position: relative;
+      width: 400px;
+      height: 320px;
+      margin-top: 200px;
+      margin-bottom: 60px;
+      overflow: visible;
+      z-index: 10;
+    }
+
+    .envelope-image {
+      position: absolute;
+      width: 100%;
+      height: auto;
+      top: 0;
+      left: 0;
+      transition: opacity 0.5s ease;
+      z-index: 1;
+      pointer-events: none; /* prevents blocking */
+    }
+
+    #envelopeClosed {
+      pointer-events: auto; /* this one can be clicked */
+      z-index: 2;
+      cursor: pointer;
+    }
+
+    .invite-card {
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%) scale(1);
+      width: 320px;
+      opacity: 0;
+      z-index: 3;
+      animation-fill-mode: forwards;
+    }
+
+    .slide-up {
+      animation: liftGrowBounce 3s ease-in-out forwards;
+    }
+
+    @keyframes liftGrowBounce {
+      25% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(-160px) scale(1);
+      }
+      60% {
+        transform: translateX(-50%) translateY(20px) scale(1.4);
+      }
+      100% {
+        transform: translateX(-50%) translateY(0) scale(1.5);
+        opacity: 1;
+      }
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .card {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      padding: 20px;
+      text-align: center;
+      width: 90%;
+      max-width: 400px;
+      animation: fadeIn 1s forwards;
+      margin-bottom: 20px;
+    }
+
+    .rsvp-link {
+      margin-top: 20px;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-weight: bold;
+      text-decoration: none;
+      color: #333;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .form-group {
+      margin: 12px 0;
+      text-align: left;
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    input, select, button {
+      font-family: 'Segoe UI', sans-serif;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      padding: 10px;
+      font-size: 16px;
+      width: 100%;
+      box-sizing: border-box;
+      transition: border-color 0.3s;
+    }
+
+    input:focus, select:focus {
+      border-color: #d4af7f;
+      outline: none;
+      box-shadow: 0 0 5px rgba(212, 175, 127, 0.5);
+    }
+
+    button {
+      background-color: #d4af7f;
+      color: white;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: #b07b46;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="envelope-wrapper">
+    <img src="envelope_closed.png" class="envelope-image" id="envelopeClosed" alt="Closed Envelope" />
+    <img src="envelope_open_with_card.png" class="envelope-image hidden" id="envelopeOpenCard" alt="Open Envelope with Card" />
+    <img src="envelope_open_empty.png" class="envelope-image hidden" id="envelopeOpenEmpty" alt="Open Empty Envelope" />
+    <img src="invitation_card.png" class="invite-card hidden" id="inviteCard" alt="Invitation Card" />
+  </div>
+
+  <div class="card hidden" id="invitationCard" style="position: absolute; right: 5%; top: 150px; z-index: 999;">
+    <h2>You Are Invited!</h2>
+    <p>Join us in celebrating the wedding of</p>
+    <h3>Mason & Sidney</h3>
+    <p>March 7, 2026<br>Florida Gulf Coast</p>
+    <div class="rsvp-link hidden" id="rsvpLink" onclick="showRsvpForm()">Click here to RSVP</div>
+  </div>
+
+  <div class="card hidden" id="rsvpFormContainer" style="position: absolute; right: 5%; top: 600px; z-index: 999;">
+    <h3>RSVP</h3>
+    <form id="rsvpForm">
+      <div class="form-group">
+        <label for="name">Your Name:</label>
+        <input type="text" name="Name" id="name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="attendance">Will you attend?</label>
+        <select name="Attendance" id="attendance" required>
+          <option value="">--Select--</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="plusOne">Will you bring a plus one?</label>
+        <select name="PlusOne" id="plusOne" required onchange="toggleGuestName(this.value)">
+          <option value="">--Select--</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+
+      <div class="form-group hidden" id="guestNameGroup">
+        <label for="guestName">Guest Name:</label>
+        <input type="text" name="GuestName" id="guestName">
+      </div>
+
+      <div class="form-group">
+        <label for="message">Message (optional):</label>
+        <input type="text" name="Message" id="message">
+      </div>
+
+      <button type="submit">Submit RSVP</button>
+    </form>
+    <p id="confirmation" style="color: green; display: none; margin-top: 10px;">Thank you for your response!</p>
+  </div>
+
+  <script>
+    window.onload = function () {
+      document.getElementById("envelopeClosed").classList.remove("hidden");
+
+      // Works on iPhone and desktop
+      document.getElementById("envelopeClosed").addEventListener("click", openInvitation);
+    };
+
+    function openInvitation() {
+      document.getElementById("envelopeClosed").classList.add("hidden");
+      document.getElementById("envelopeOpenCard").classList.remove("hidden");
+
+      const invite = document.getElementById("inviteCard");
+      invite.classList.remove("hidden");
+
+      setTimeout(() => {
+        invite.classList.add("slide-up");
+        document.getElementById("envelopeOpenCard").classList.add("hidden");
+        document.getElementById("envelopeOpenEmpty").classList.remove("hidden");
+      }, 800);
+
+      setTimeout(() => {
+        document.getElementById("invitationCard").classList.remove("hidden");
+        document.getElementById("rsvpLink").classList.remove("hidden");
+      }, 3500);
+    }
+
+    function showRsvpForm() {
+      const form = document.getElementById('rsvpFormContainer');
+      form.classList.remove('hidden');
+      form.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function toggleGuestName(value) {
+      const guestGroup = document.getElementById('guestNameGroup');
+      if (value === "Yes") {
+        guestGroup.classList.remove('hidden');
+      } else {
+        guestGroup.classList.add('hidden');
+      }
+    }
+
+    document.getElementById("rsvpForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const formData = new FormData(e.target);
+      const data = Object.fromEntries(formData.entries());
+
+      fetch("https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec", {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+      });
+
+      e.target.reset();
+      document.getElementById("confirmation").style.display = 'block';
+    });
+  </script>
+</body>
+</html>
+
