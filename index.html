@@ -147,7 +147,7 @@
 </head>
 <body>
 
-  <div class="envelope-wrapper" id="envelopeWrapper">
+  <div class="envelope-wrapper" onclick="openInvitation()">
     <img src="envelope_closed.png" class="envelope-image" id="envelopeClosed" alt="Closed Envelope" />
     <img src="envelope_open_with_card.png" class="envelope-image hidden" id="envelopeOpenCard" alt="Open Envelope with Card" />
     <img src="envelope_open_empty.png" class="envelope-image hidden" id="envelopeOpenEmpty" alt="Open Empty Envelope" />
@@ -208,7 +208,6 @@
   <script>
     window.onload = function () {
       document.getElementById("envelopeClosed").classList.remove("hidden");
-        document.getElementById("envelopeWrapper").addEventListener("click", openInvitation);
     };
 
     function openInvitation() {
@@ -264,8 +263,6 @@
     });
   </script>
 </body>
-</html>
-
 </html>
 
 
