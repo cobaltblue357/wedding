@@ -20,9 +20,10 @@
 
     .envelope-wrapper {
       position: relative;
-      width: 400px;
-      height: 320px;
-      margin-top: 200px;
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+      margin-top: 100px;
       margin-bottom: 60px;
       overflow: visible;
       z-index: 10;
@@ -36,11 +37,11 @@
       left: 0;
       transition: opacity 0.5s ease;
       z-index: 1;
-      pointer-events: none; /* prevents blocking */
+      pointer-events: none;
     }
 
     #envelopeClosed {
-      pointer-events: auto; /* this one can be clicked */
+      pointer-events: auto;
       z-index: 2;
       cursor: pointer;
     }
@@ -50,7 +51,8 @@
       bottom: -10px;
       left: 50%;
       transform: translateX(-50%) scale(1);
-      width: 320px;
+      width: 100%;
+      max-width: 320px;
       opacity: 0;
       z-index: 3;
       animation-fill-mode: forwards;
@@ -150,57 +152,25 @@
       background-color: #b07b46;
     }
 
-@media only screen and (max-width: 768px) {
-  #invitationCard,
-  #rsvpFormContainer {
-    position: relative !important;
-    top: auto !important;
-    right: auto !important;
-    left: auto !important;
-    margin: 20px auto !important;
-    width: 90% !important;
-    max-width: 400px;
-  }
+    @media only screen and (max-width: 768px) {
+      .envelope-wrapper {
+        margin-top: 40px;
+      }
 
-  .envelope-wrapper {
-    width: 100%;
-    height: auto;
-    margin-top: 100px;
-  }
+      .invite-card {
+        max-width: 280px;
+        transform: translateX(-50%) scale(1.2);
+      }
 
-  .envelope-image {
-    width: 100%;
-    height: auto;
-  }
-
-  .card {
-    padding: 12px;
-    font-size: 12px;
-  }
-
-  h2 {
-    font-size: 22px;
-  }
-
-  h3 {
-    font-size: 20px;
-  }
-
-  .rsvp-link {
-    font-size: 16px;
-    padding: 10px 20px;
-    display: inline-block;
-  }
-
-  label,
-  input,
-  select,
-  button {
-    font-size: 15px;
-  }
-}
-
-
+      #invitationCard,
+      #rsvpFormContainer {
+        position: relative !important;
+        right: auto !important;
+        top: auto !important;
+        margin: 20px auto !important;
+        width: 90% !important;
+      }
+    }
   </style>
 </head>
 <body>
@@ -212,7 +182,7 @@
     <img src="invitation_card.png" class="invite-card hidden" id="inviteCard" alt="Invitation Card" />
   </div>
 
-  <div class="card hidden" id="invitationCard" style="position: absolute; right: 5%; top: 150px; z-index: 999;">
+  <div class="card hidden" id="invitationCard">
     <h2>You Are Invited!</h2>
     <p>Join us in celebrating the wedding of</p>
     <h3>Mason & Sidney</h3>
@@ -220,7 +190,7 @@
     <div class="rsvp-link hidden" id="rsvpLink" onclick="showRsvpForm()">Click here to RSVP</div>
   </div>
 
-  <div class="card hidden" id="rsvpFormContainer" style="position: absolute; right: 5%; top: 600px; z-index: 999;">
+  <div class="card hidden" id="rsvpFormContainer">
     <h3>RSVP</h3>
     <form id="rsvpForm">
       <div class="form-group">
@@ -264,8 +234,6 @@
   <script>
     window.onload = function () {
       document.getElementById("envelopeClosed").classList.remove("hidden");
-
-      // Works on iPhone and desktop
       document.getElementById("envelopeClosed").addEventListener("click", openInvitation);
     };
 
@@ -296,11 +264,7 @@
 
     function toggleGuestName(value) {
       const guestGroup = document.getElementById('guestNameGroup');
-      if (value === "Yes") {
-        guestGroup.classList.remove('hidden');
-      } else {
-        guestGroup.classList.add('hidden');
-      }
+      guestGroup.classList.toggle('hidden', value !== 'Yes');
     }
 
     document.getElementById("rsvpForm").addEventListener("submit", function (e) {
@@ -308,12 +272,10 @@
       const formData = new FormData(e.target);
       const data = Object.fromEntries(formData.entries());
 
-      fetch("https://script.google.com/macros/s/AKfycbxt5RwRjl3YiGLdmRdFOSv2VvOMY_2di8ACVGC6FNv7qebU39u0oz8a8y_xU9A42GwN/exec", {
+      fetch(""https://script.google.com/macros/s/AKfycbxt5RwRjl3YiGLdmRdFOSv2VvOMY_2di8ACVGC6FNv7qebU39u0oz8a8y_xU9A42GwN/exec"", {
         method: "POST",
         mode: "no-cors",
-        headers: {
-          "Content-Type": "application/json"
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data)
       });
 
