@@ -151,17 +151,6 @@
     }
 
 @media only screen and (max-width: 768px) {
-  #invitationCard,
-  #rsvpFormContainer {
-    position: relative !important;
-    top: auto !important;
-    right: auto !important;
-    left: auto !important;
-    margin: 20px auto !important;
-    width: 90% !important;
-    max-width: 400px;
-  }
-
   .envelope-wrapper {
     width: 100%;
     height: auto;
@@ -174,26 +163,42 @@
   }
 
   .invite-card {
-    width: 90% !important;
-    max-width: 320px !important;
+    width: 85% !important;
+    max-width: 300px;
     left: 50%;
     bottom: 0 !important;
     transform: translateX(-50%) scale(1) !important;
   }
 
   .invite-card.slide-up {
-    animation: slideInMobile 1.5s ease-out forwards !important;
+    animation: mobileSlideUp 2s ease-in-out forwards !important;
   }
 
-  @keyframes slideInMobile {
+  @keyframes mobileSlideUp {
     0% {
       opacity: 0;
       transform: translateX(-50%) translateY(50px) scale(0.9);
     }
-    100% {
+    50% {
       opacity: 1;
-      transform: translateX(-50%) translateY(0px) scale(1);
+      transform: translateX(-50%) translateY(-10px) scale(1.05);
     }
+    100% {
+      transform: translateX(-50%) translateY(0px) scale(1.05);
+      opacity: 1;
+    }
+  }
+
+  #invitationCard,
+  #rsvpFormContainer {
+    position: relative !important;
+    top: auto !important;
+    right: auto !important;
+    left: auto !important;
+    margin: 20px auto !important;
+    width: 90% !important;
+    max-width: 400px;
+    z-index: 999;
   }
 
   .card {
@@ -222,6 +227,7 @@
     font-size: 15px;
   }
 }
+
   </style>
 </head>
 <body>
