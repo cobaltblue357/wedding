@@ -151,38 +151,6 @@
     }
 
 @media only screen and (max-width: 768px) {
-  .envelope-wrapper {
-    width: 100%;
-    max-width: 360px;
-    height: auto;
-    margin-top: 60px;
-  }
-
-  .envelope-image {
-    width: 100%;
-    height: auto;
-  }
-
-  .invite-card {
-    transform: translateX(-50%) scale(0.7) !important;
-    bottom: -80px !important;
-    max-width: 280px !important;
-  }
-  
-  @keyframes liftGrowBounce {
-    25% {
-      opacity: 1;
-      transform: translateX(-50%) translateY(-120px) scale(0.7);
-    }
-    60% {
-      transform: translateX(-50%) translateY(10px) scale(0.8);
-    }
-    100% {
-      transform: translateX(-50%) translateY(0) scale(0.7);
-      opacity: 1;
-    }
-  }
-
   #invitationCard,
   #rsvpFormContainer {
     position: relative !important;
@@ -194,9 +162,20 @@
     max-width: 400px;
   }
 
+  .envelope-wrapper {
+    width: 100%;
+    height: auto;
+    margin-top: 100px;
+  }
+
+  .envelope-image {
+    width: 100%;
+    height: auto;
+  }
+
   .card {
     padding: 12px;
-    font-size: 13px;
+    font-size: 12px;
   }
 
   h2 {
@@ -219,7 +198,27 @@
   button {
     font-size: 15px;
   }
+
+  .invite-card {
+    bottom: -20px !important;
+    transform: translateX(-50%) scale(1) !important;
+  }
+
+  @keyframes liftGrowBounce {
+    25% {
+      opacity: 1;
+      transform: translateX(-50%) translateY(-80px) scale(1);
+    }
+    60% {
+      transform: translateX(-50%) translateY(10px) scale(1.1);
+    }
+    100% {
+      transform: translateX(-50%) translateY(0) scale(1.1);
+      opacity: 1;
+    }
+  }
 }
+
 
   </style>
 </head>
