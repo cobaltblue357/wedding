@@ -153,43 +153,55 @@
 @media only screen and (max-width: 768px) {
   body {
     min-height: 100vh;
-    justify-content: flex-start;
-    padding-top: 40px;
+    padding-top: 20px;
   }
 
   .envelope-wrapper {
     width: 100%;
-    margin-top: 40px;
+    max-width: 360px;
+    margin-top: 60px;
+    margin-bottom: 40px;
     height: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    overflow: visible;
   }
 
   .envelope-image {
     width: 100%;
     height: auto;
-    position: static;
+    position: absolute;
   }
 
   .invite-card {
-    position: relative !important;
-    transform: none !important;
-    width: 90% !important;
-    max-width: 320px;
-    margin-top: 20px;
-    opacity: 1 !important;
-    animation: none !important;
+    position: absolute;
+    bottom: -30px; /* was -10px originally */
+    left: 50%;
+    transform: translateX(-50%) scale(1.2); /* scale slightly smaller than 1.5 */
+    width: 90%;
+    max-width: 300px;
     z-index: 3;
+  }
+
+  .slide-up {
+    animation: liftGrowBounceMobile 2.5s ease-in-out forwards;
+  }
+
+  @keyframes liftGrowBounceMobile {
+    0% {
+      opacity: 0;
+      transform: translateX(-50%) translateY(80px) scale(1);
+    }
+    60% {
+      opacity: 1;
+      transform: translateX(-50%) translateY(-10px) scale(1.25);
+    }
+    100% {
+      transform: translateX(-50%) translateY(0px) scale(1.3);
+      opacity: 1;
+    }
   }
 
   #invitationCard,
   #rsvpFormContainer {
     position: relative !important;
-    top: auto !important;
-    right: auto !important;
-    left: auto !important;
     margin: 20px auto !important;
     width: 90% !important;
     max-width: 400px;
@@ -222,6 +234,7 @@
     font-size: 15px;
   }
 }
+
   </style>
 </head>
 <body>
