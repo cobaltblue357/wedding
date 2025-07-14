@@ -150,34 +150,43 @@
       background-color: #b07b46;
     }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 768px) {
+  #invitationCard,
+  #rsvpFormContainer {
+    position: relative !important;
+    top: auto !important;
+    right: auto !important;
+    left: auto !important;
+    margin: 20px auto !important;
+    width: 90% !important;
+    max-width: 400px;
+  }
+
   .envelope-wrapper {
     width: 100%;
     height: auto;
-    margin-top: 120px;
-    margin-bottom: 40px;
+    margin-top: 100px;
   }
 
-  .envelope-image,
-  .invite-card {
+  .envelope-image {
     width: 100%;
     height: auto;
-    left: 0;
-    transform: none;
+  }
+
+  .invite-card {
+    width: 90%;
+    transform: scale(1.2); /* optional, tweak bounce effect */
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   .card {
-    width: 90%;
     padding: 16px;
     font-size: 16px;
-    position: relative;
-    right: 0;
-    top: auto;
-    margin: 0 auto 20px auto;
   }
 
   h2 {
-    font-size: 24px;
+    font-size: 22px;
   }
 
   h3 {
@@ -186,7 +195,7 @@
 
   .rsvp-link {
     font-size: 16px;
-    padding: 10px 16px;
+    padding: 10px 20px;
     display: inline-block;
   }
 
@@ -196,11 +205,8 @@
   button {
     font-size: 15px;
   }
-
-  #rsvpFormContainer {
-    top: auto !important;
-  }
 }
+
   </style>
 </head>
 <body>
