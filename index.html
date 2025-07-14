@@ -164,23 +164,21 @@
   }
 
   .invite-card {
-    width: 90% !important;
-    max-width: 320px;
-    height: auto !important;
-    bottom: -40px !important; /* lowers the card */
-    transform: translateX(-50%) scale(0.85) !important; /* smaller card */
+    transform: translateX(-50%) scale(0.7) !important;
+    bottom: -80px !important;
+    max-width: 280px !important;
   }
-
+  
   @keyframes liftGrowBounce {
     25% {
       opacity: 1;
-      transform: translateX(-50%) translateY(-100px) scale(0.85);
+      transform: translateX(-50%) translateY(-120px) scale(0.7);
     }
     60% {
-      transform: translateX(-50%) translateY(10px) scale(0.95);
+      transform: translateX(-50%) translateY(10px) scale(0.8);
     }
     100% {
-      transform: translateX(-50%) translateY(0) scale(0.85);
+      transform: translateX(-50%) translateY(0) scale(0.7);
       opacity: 1;
     }
   }
