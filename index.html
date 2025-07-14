@@ -150,25 +150,55 @@
       background-color: #b07b46;
     }
 
- @media only screen and (max-width: 768px) {
-      .envelope-wrapper {
-        margin-top: 40px;
-      }
+@media only screen and (max-width: 768px) {
+  #invitationCard,
+  #rsvpFormContainer {
+    position: relative !important;
+    top: auto !important;
+    right: auto !important;
+    left: auto !important;
+    margin: 20px auto !important;
+    width: 90% !important;
+    max-width: 400px;
+  }
 
-      .invite-card {
-        max-width: 280px;
-        transform: translateX(-50%) scale(1.2);
-      }
+  .envelope-wrapper {
+    width: 100%;
+    height: auto;
+    margin-top: 100px;
+  }
 
-      #invitationCard,
-      #rsvpFormContainer {
-        position: relative !important;
-        right: auto !important;
-        top: auto !important;
-        margin: 20px auto !important;
-        width: 90% !important;
-      }
-    }
+  .envelope-image {
+    width: 100%;
+    height: auto;
+  }
+
+  .card {
+    padding: 12px;
+    font-size: 12px;
+  }
+
+  h2 {
+    font-size: 22px;
+  }
+
+  h3 {
+    font-size: 20px;
+  }
+
+  .rsvp-link {
+    font-size: 16px;
+    padding: 10px 20px;
+    display: inline-block;
+  }
+
+  label,
+  input,
+  select,
+  button {
+    font-size: 15px;
+  }
+}
 
 
   </style>
@@ -290,6 +320,9 @@
       e.target.reset();
       document.getElementById("confirmation").style.display = 'block';
     });
+  </script>
+</body>
+</html>
   </script>
 </body>
 </html>
