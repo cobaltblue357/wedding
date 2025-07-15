@@ -29,6 +29,23 @@
       z-index: 10;
     }
 
+    .calendar-btn {
+  display: inline-block;
+  margin-top: 20px;
+  background-color: #0b8043;
+  color: white;
+  padding: 10px 20px;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s;
+}
+
+.calendar-btn:hover {
+  background-color: #086c37;
+}
+
     .envelope-image {
       position: absolute;
       width: 100%;
@@ -337,6 +354,18 @@ h3 {
     <p id="confirmation" style="color: green; display: none; margin-top: 10px;">Thank you for your response!</p>
 
     <a href="wedding_invite.png" download="Mason_Sidney_Wedding_Invite.png" class="download-btn">Download A Copy of Invitation</a>
+    <a
+  href="https://www.google.com/calendar/render?action=TEMPLATE
+  &text=Sidney+%26+Mason+Wedding
+  &dates=20260307T213000Z/
+  &details=Please+join+us+for+our+wedding+at+the+Sanctuary+Event+Venue+!+Ceremony+starts+at+4:30+PM+with+reception+to+follow.
+  &location=716+N+9th+Avenue,Pensacola+Florida
+  &sf=true&output=xml"
+  target="_blank"
+  class="calendar-btn"
+>
+  Add to Google Calendar
+</a>
   </div>
 
   <script>
