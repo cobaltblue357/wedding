@@ -45,6 +45,12 @@
       z-index: 2;
       cursor: pointer;
     }
+    .fancy-names {
+  font-family: 'Parisienne', cursive;
+  font-size: 36px;
+  margin: 10px 0;
+  color: #333;
+}
 
     .invite-card {
       position: absolute;
@@ -265,15 +271,13 @@ h3 {
     <img src="invitation_card2.PNG" class="invite-card hidden" id="inviteCard" alt="Invitation Card" />
   </div>
 
-  <div class="card hidden" id="invitationCard" style="position: absolute; right: 5%; top: 150px; z-index: 999;">
-    <h2>You Are Invited!</h2>
-    <p style="margin: 10px 0; font-family: 'Playfair Display', serif;">
-    <p>Join us in celebrating the wedding of</p>
-     <h3>Sidney & Mason</h3>
-    <h3 style="font-family: 'Parisienne', cursive; font-size: 36px;">
+<div class="card hidden" id="invitationCard" style="position: absolute; right: 5%; top: 150px; z-index: 999;">
+  <h2>You Are Invited!</h2>
+  <p>Join us in celebrating the wedding of</p>
+  <div class="fancy-names">Sidney & Mason</div>
     <p>Saturday, March 7th 2026<br>4:30pm @ The Sanctuary Event Venue<br>716 N 9th Avenue, Pensacola Florida </p>
     <div class="rsvp-link hidden" id="rsvpLink" onclick="showRsvpForm()">Click here to RSVP</div>
-  </div>
+</div>
 
   <div class="card hidden" id="rsvpFormContainer" style="position: absolute; right: 5%; top: 600px; z-index: 999;">
     <h3>RSVP</h3>
