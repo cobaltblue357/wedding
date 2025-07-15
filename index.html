@@ -158,6 +158,23 @@
       background-color: #b07b46;
     }
 
+    .download-btn {
+  display: inline-block;
+  margin-top: 20px;
+  background-color: #d4af7f;
+  color: white;
+  padding: 10px 20px;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s;
+}
+
+.download-btn:hover {
+  background-color: #b07b46;
+}
+
 @media only screen and (max-width: 768px) {
   body {
     padding: 0;
@@ -314,6 +331,7 @@ h3 {
         <label for="message">Message (optional):</label>
         <input type="text" name="Message" id="message">
       </div>
+      <a href="wedding_invite.png" download="Mason_Sidney_Wedding_Invite.png" class="download-btn">Download Invitation</a>
 
       <button type="submit">Submit RSVP</button>
     </form>
