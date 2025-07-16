@@ -402,14 +402,18 @@ h3 {
       form.scrollIntoView({ behavior: 'smooth' });
     }
 
-    function toggleGuestName(value) {
-      const guestGroup = document.getElementById('guestNameGroup');
-      if (value === "Yes") {
-        guestGroup.classList.remove('hidden');
-      } else {
-        guestGroup.classList.add('hidden');
-      }
-    }
+function toggleGuestName(value) {
+  const guestGroup = document.getElementById('guestNameGroup');
+  const guestInput = document.getElementById('guestName');
+  if (value === "Yes") {
+    guestGroup.classList.remove('hidden');
+    guestInput.setAttribute('required', 'required');
+  } else {
+    guestGroup.classList.add('hidden');
+    guestInput.removeAttribute('required');
+    guestInput.value = '';
+  }
+}
 
     document.getElementById("rsvpForm").addEventListener("submit", function (e) {
       e.preventDefault();
