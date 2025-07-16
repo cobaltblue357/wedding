@@ -456,14 +456,17 @@ function openInvitation() {
     }
 
    document.getElementById("rsvpForm").addEventListener("submit", function (e) {
-  e.preventDefault();
+    e.preventDefault();
 
-  const submitButton = e.target.querySelector('button[type="submit"]');
-  submitButton.disabled = true;
-  submitButton.innerText = "Submitting...";
+    const form = e.target;
+    const submitButton = form.querySelector('button[type="submit"]');
+    
+    // Disable button & update UI
+    submitButton.disabled = true;
+    submitButton.innerText = "Submitting...";
 
-  const formData = new FormData(e.target);
-  const data = Object.fromEntries(formData.entries());
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
 
 
       fetch("https://script.google.com/macros/s/AKfycbybwhSfBc5cBAfSh2go-7BNDed2Hg4GsJOCYHTG1uZBMH0JDvaqM9LGBvyp4GomFICA/exec", {
@@ -473,11 +476,16 @@ function openInvitation() {
           "Content-Type": "application/json"
         },
         body: JSON.stringify(data)
-      });
-
-      e.target.reset();
+      }).then(() => {
+      // Change button to green with success message
+      submitButton.innerText = "Submitted!";
+      submitButton.style.backgroundColor = "#4CAF50";  // Green
+      submitButton.style.color = "#fff";
+      
+      form.reset();
       document.getElementById("confirmation").style.display = 'block';
     });
+  });
   </script>
 </body>
 </html>
