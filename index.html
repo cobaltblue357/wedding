@@ -348,12 +348,12 @@ h3 {
     <h3>RSVP</h3>
     <form id="rsvpForm">
       <div class="form-group">
-        <label for="name">Your Name:</label>
+        <label for="name">Your Name:<span style="color: red">*</span></label>
         <input type="text" name="Name" id="name" required>
       </div>
 
       <div class="form-group">
-        <label for="attendance">Will you attend?</label>
+        <label for="attendance">Will you attend?<span style="color: red">*</span></label>
         <select name="Attendance" id="attendance" required>
           <option value="">--Select--</option>
           <option value="Yes">Yes</option>
@@ -362,7 +362,7 @@ h3 {
       </div>
 
       <div class="form-group">
-        <label for="plusOne">Will you bring a plus one?</label>
+        <label for="plusOne">Will you bring a plus one?<span style="color: red">*</span></label>
         <select name="PlusOne" id="plusOne" required onchange="toggleGuestName(this.value)">
           <option value="">--Select--</option>
           <option value="Yes">Yes</option>
@@ -381,7 +381,7 @@ h3 {
 </div>
 
 <div class="form-group">
-  <label for="Message">Message </label>
+  <label for="Message">Message (Optional) </label>
   <input type="text" name="Message" id="Message">
 </div>
 
