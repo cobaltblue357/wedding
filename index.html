@@ -301,6 +301,26 @@ h3 {
   </style>
 </head>
 <body>
+  
+<div id="clickPrompt" style="
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0,0,0,0.7);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-family: 'Segoe UI', sans-serif;
+  display: none;
+  z-index: 9999;
+">
+  Tap or click the invitation to open
+</div>
+
+
+  
 
   <div class="envelope-wrapper">
     <img src="envelope_closed.png" class="envelope-image" id="envelopeClosed" alt="Closed Envelope" />
@@ -377,31 +397,43 @@ h3 {
   </div>
 
   <script>
-    window.onload = function () {
-      document.getElementById("envelopeClosed").classList.remove("hidden");
+let clicked = false;
 
-      // Works on iPhone and desktop
-      document.getElementById("envelopeClosed").addEventListener("click", openInvitation);
-    };
+window.onload = function () {
+  document.getElementById("envelopeClosed").classList.remove("hidden");
 
-    function openInvitation() {
-      document.getElementById("envelopeClosed").classList.add("hidden");
-      document.getElementById("envelopeOpenCard").classList.remove("hidden");
-
-      const invite = document.getElementById("inviteCard");
-      invite.classList.remove("hidden");
-
-      setTimeout(() => {
-        invite.classList.add("slide-up");
-        document.getElementById("envelopeOpenCard").classList.add("hidden");
-        document.getElementById("envelopeOpenEmpty").classList.remove("hidden");
-      }, 800);
-
-      setTimeout(() => {
-        document.getElementById("invitationCard").classList.remove("hidden");
-        document.getElementById("rsvpLink").classList.remove("hidden");
-      }, 3500);
+  // Set timer for prompt
+  setTimeout(() => {
+    if (!clicked) {
+      document.getElementById("clickPrompt").style.display = "block";
     }
+  }, 5000); // 5 seconds
+
+  // Click event
+  document.getElementById("envelopeClosed").addEventListener("click", openInvitation);
+};
+
+function openInvitation() {
+  clicked = true;
+  document.getElementById("clickPrompt").style.display = "none";
+
+  document.getElementById("envelopeClosed").classList.add("hidden");
+  document.getElementById("envelopeOpenCard").classList.remove("hidden");
+
+  const invite = document.getElementById("inviteCard");
+  invite.classList.remove("hidden");
+
+  setTimeout(() => {
+    invite.classList.add("slide-up");
+    document.getElementById("envelopeOpenCard").classList.add("hidden");
+    document.getElementById("envelopeOpenEmpty").classList.remove("hidden");
+  }, 800);
+
+  setTimeout(() => {
+    document.getElementById("invitationCard").classList.remove("hidden");
+    document.getElementById("rsvpLink").classList.remove("hidden");
+  }, 3500);
+}
 
     function showRsvpForm() {
       const form = document.getElementById('rsvpFormContainer');
